@@ -2,6 +2,50 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.44.1] - 2026-07-07
+
+### New features
+
+- **Pack – "Finish Position" / "Finish Box" button:** A new action button is now available on the Packing screen (step 40). Operators with the appropriate permission can declare the remaining quantity of a position or an in-progress box as missing in one tap. A confirmation dialog shows the quantity to be declared before proceeding. The flow then automatically returns to the next position or round/equipment scan as appropriate.
+
+- **Article supplier code displayed on RF screens:** The supplier article code (internal reference comment) is now shown in the information header on the following mobile screens: Article Info, Box Preparation, Content Movement, Cycle Counts, HU Movement, Init Stock, Pack, Pick, Pick-and-Pack, Reception, Round Packing, and Round Picking.
+
+- **Stock on hand visible on the Article detail page:** The list of handling unit contents (stock on hand) associated with an article is now displayed directly on the article detail page for users who have read access to stock content.
+
+- **Movement priority visible on the Movements list and detail page:** The priority field is now shown in the movements list and on the movement detail page.
+
+- **Carrier "Is Virtual" flag visible on the Carrier list and detail page:** The virtual flag of a carrier is now displayed in the carrier list and on the carrier detail page.
+
+- **Purchase order line article now links to the article detail page:** Clicking the article name on a purchase order line now navigates directly to the corresponding article detail.
+
+---
+
+### Improvements
+
+- **Reserved carriers excluded from selection lists:** Virtual and closed carriers are now automatically filtered out from carrier selection dropdowns across the application (appointments, gate entry, carrier add/edit forms, and load creation).
+
+- **Button order and colour configurable on RF preparation screens:** The action buttons on the Pick, Pack, and Pick-and-Pack RF screens can now be reordered and recoloured without a code change, via the `RF_PREPARATION_ACTION_BUTTONS` parameter (scope: outbound). Each button entry in that parameter's extras accepts an `order` (integer) and a `color` (CSS value).
+
+- **Stock owner resolved more reliably on RF screens:** The stock owner is now looked up following a consistent priority (barcode → logistics unit → article) across all mobile flows (box preparation, content movement, init stock, quantity move, stock owner selection). This prevents cases where the stock owner was missing or incorrect when it was only set at a higher level.
+
+- **Location scanning accepts both name and barcode simultaneously on Pick and Pick-and-Pack:** The location scan step now searches by both name and barcode in a single query, so a scanned barcode or a typed location name both resolve correctly without separate code paths.
+
+- **Quantity confirmation dialog on Movement-to-Process:** When the quantity entered to process a movement exceeds the expected quantity, a confirmation dialog is shown before proceeding, preventing accidental over-processing.
+
+- **Movement type list sorted from most recent to oldest:** The movement type dropdown in the add movement form now lists types in descending order.
+
+- **Empty and similar location lookups handle backend errors more gracefully:** If the backend returns an error or an unexpected response when suggesting empty or similar locations, the screen now clears the list cleanly rather than crashing.
+
+- **Content stock owner filter relaxed when no stock owner is specified:** When no stock owner is known, the content search no longer incorrectly restricts results to records with a null stock owner; any stock owner is now accepted.
+
+- **Scan steps handle missing backend responses without crashing:** The Pack, Reception, Cycle Count, Content Movement, and other scan steps now handle cases where the backend call returns no result (network error, etc.) by resetting the form cleanly instead of throwing an error.
+
+- **Form text fields automatically trimmed of leading/trailing spaces:** String, text area, and password inputs on web forms now strip surrounding whitespace when the user leaves the field or presses Enter, preventing accidental spaces from being saved.
+
+- **Autocomplete fields in web forms now support dynamic filtering and always show the current value:** Option dropdowns that depend on another field's value are hidden until the dependency is resolved. In edit mode, the current value is always visible in the list even when it falls outside the first page of results.
+
+- **"Partial quantity" indicator on Movement-to-Process corrected:** The header now highlights the quantity as partial whenever the processed quantity differs from the expected quantity (not only when it is strictly less).
+
 ## [1.44.0] - 2026-06-12
 
 ### New features
