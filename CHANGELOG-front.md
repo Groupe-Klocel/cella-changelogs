@@ -2,6 +2,36 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.0] - 2026-07-13
+
+### New features
+
+- **Visitor Management module (web):** A dedicated "Visitor Management" section is now available in the navigation menu (visible to users with the relevant permissions). It includes:
+  - **Pre-register a visitor** – create a visit record in advance with visitor details, destination zones, escort requirement and visit reason.
+  - **Visitor list** – browse, search and view the detail of all registered visits, including safety-instruction acceptance status, allowed zones, visitor signature and full status history.
+  - **Visitor check-in** – security staff can search for a pending visit, review the visitor's registration and approve or refuse entry (with a structured refusal reason). Refusing a visit cancels it and records the reason.
+  - **Visitor check-out** – security staff can record the exact time a visitor leaves the site.
+  - **Visitor schedule (calendar view)** – a calendar showing all planned visits, separate from the truck appointment calendar.
+
+- **Visitor self-check-in kiosk (mobile):** A new self-service flow is available on the mobile interface under "Visitor Entry". Visitors can:
+  1. Choose their preferred language (German or English).
+  2. Search for a pre-registered visit by reference number or QR code scan, or proceed as a walk-in without an appointment.
+  3. Complete or confirm their registration details (name, company, email, phone, licence plate; walk-ins also provide the visit reason, internal referent and destination zones).
+  4. Read and accept the safety documents for each destination zone (fetched per zone from the configured business rule).
+  5. Sign digitally on the kiosk screen.
+  6. Wait on a live polling screen while security reviews the request, then see a clear approved or refused result — including an escort reminder when required.
+
+- **Truck appointment list now excludes visitor visits:** When the "Visit" appointment type is configured, visits no longer appear in the truck appointment list or the truck schedule calendar. Each type of appointment is shown in its own dedicated area.
+
+### Improvements
+
+- **Appointment schedule calendar:** Visit-type appointments are now hidden from the truck appointments calendar. Appointment times are parsed correctly as UTC so the calendar always shows events in the user's local time zone.
+- **Column filter stability in lists:** Applying a column filter header no longer inadvertently resets column visibility, order or width settings that had been changed since the last data load.
+- **Tooltip positioning on buttons:** Tooltips on action buttons no longer shift or flicker when hovering near the button edge.
+- **Translation with numeric zero:** Messages containing the value `0` (for example "0 of 2 confirmed") now display correctly instead of falling back to the placeholder key.
+- **Date formatting in forms:** Date pickers in add/edit forms no longer throw an error in English locales due to a missing date format definition.
+- **Multi-select dropdowns in forms:** Fields that accept multiple values (such as allowed zones) now display as a multi-select picker in add/edit forms.
+
 ## [1.44.1] - 2026-07-07
 
 ### New features
