@@ -2,6 +2,56 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.1] - 2026-07-17
+
+### New features
+
+- **CellaBot on RF/mobile terminals** – warehouse operators using handheld scanners can now open a CellaBot chat panel directly from the mobile interface. The assistant answers questions about stock, locations and current tasks in read-only mode (it cannot make changes from the mobile device). It appears as a floating button and slides up as a drawer over the current screen.
+
+- **Locations Occupancy view** – a new screen under Stock Management lets users visualise warehouse slot occupancy in 2D grid, top-view and front-view perspectives, with tooltips showing detailed stock information per location.
+
+- **Custom Permissions management** – a new section under Administration → Access Management allows creating and managing custom permission sets (with their detail lines) that can be applied to warehouse workers. The full CRUD (create, edit, delete) is available for both the permission group and its individual rules.
+
+- **Custom permissions on warehouse worker profiles** – administrators can now assign and manage custom permissions directly from a warehouse worker's detail page, without leaving the worker record.
+
+- **AI Conversations audit log** – supervisors and administrators with the appropriate access can browse the history of all CellaBot conversations (by user and date) from the Monitoring menu.
+
+- **"Magic filter" in list views** – list screens now include a smart free-text filter bar that lets users search across multiple fields at once, in addition to the existing advanced filter panel.
+
+- **Record History: transaction grouping** – the Record History screen now shows a Transaction ID column, making it easier to identify all changes that were made together in a single operation.
+
+- **Record History: field-level diff view** – detail pages for record history entries now display a before/after comparison of the changed fields, so users can see exactly what values were modified.
+
+- **CellaBot: conversation continuity across page reloads** – the chat history is now preserved within the browser tab session, so a hard page refresh no longer clears the conversation. Clearing the chat or logging out still starts fresh.
+
+- **CellaBot: inline charts** – the assistant can now render data as charts directly inside the chat widget when answering analytical questions.
+
+- **CellaBot: proposed actions with confirmation step** – when the assistant suggests a data-changing operation, it now presents a Confirm / Cancel card before executing anything, giving the user explicit control.
+
+---
+
+### Improvements
+
+- **Locale handling for all language-dependent queries** – stock status lists, reception screens and server-side data fetching now correctly derive the two-letter language code from any locale format (e.g. `fr-FR` → `fr`). This fixes display issues for users whose browser locale includes a regional variant.
+
+- **Equipment selection on picking** – the equipment pick-list now loads up to 500 items (previously 100), reducing cases where the correct equipment was missing from the list.
+
+- **Visitor safety checklist** – zones that have no safety documents configured no longer block the check-in flow. Only zones that actually have documents to acknowledge require acceptance. A clear informational message is shown when no documents are configured at all.
+
+- **Appointment form** – the date/time field now displays correctly regardless of the user's locale (including English), preventing a blank or broken date-picker.
+
+- **Text input fields** – the artificial 100-character cap that was applied by default to all free-text fields in forms has been removed. Fields no longer silently truncate input unless the data model explicitly defines a limit.
+
+- **Detail page loading** – detail pages no longer briefly show empty or stale content while data is still being fetched, avoiding a flash of missing information on initial load.
+
+- **CellaBot: Markdown links safety** – assistant responses now only render clickable links for standard web addresses and relative in-app paths; unknown or potentially harmful URL schemes are displayed as plain text.
+
+---
+
+### Fixes
+
+- **Visitor safety checklist error handling** – a failure to load the document set for one zone no longer shows a generic error and aborts the entire checklist; that zone is simply treated as having no documents, and the rest of the checklist loads normally.
+
 ## [1.45.0] - 2026-07-13
 
 ### New features
