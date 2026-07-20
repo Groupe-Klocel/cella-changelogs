@@ -2,6 +2,38 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.2] - 2026-07-20
+
+### New features
+
+- New **Security settings** page (Administration > Access Management > Security) to configure the password policy: minimum length, password history, minimum difference from the previous password, personal-information check, expiration, maximum login attempts, and complexity rules (uppercase, lowercase, number, special character).
+- Password rules configured in Security settings are now enforced when a user resets their password or when an administrator creates a warehouse worker, with clear on-screen guidance when a rule is not met.
+- Users can now be locked out after too many failed login attempts, with a clear message explaining why access is blocked.
+- Appointments, loads, deliveries, customer orders and purchase orders can now be linked to each other directly from their detail pages or list screens, using new **"Assign to load"** and **"Assign to appointment"** actions (including bulk assignment from list screens). Existing links can also be removed from the same screens.
+- Purchase orders can now be pre-assigned to a load from a dedicated allocation screen, similar to the existing delivery pre-assignment screen.
+- Customer orders can now be pre-assigned to a load from a dedicated allocation screen.
+- Appointment creation/edition now supports directly selecting the loads, deliveries, orders or purchase orders to attach, instead of only creating a new load automatically.
+- Appointments now support optional free-text references and a "truck composition" section (pallet types and quantities, plus free instructions), visible on both the edit form and the appointment detail page.
+- A new "references complete" status lets an internal user confirm that a carrier's documents and references have been properly submitted before the appointment is validated.
+- Added a restricted, simplified appointment form and view for carrier users: they can create/consult appointments, provide truck/driver information and attach documents, but cannot manage docks, recurring appointments, status beyond "Submitted", or entity links.
+- Gate validation now lets the agent re-assign the truck to a different dock at the moment of validating access.
+- The load detail page now shows pre-assigned purchase orders (for inbound loads) in addition to deliveries and orders.
+
+### Improvements
+
+- The Schedule (agenda) and Gate validation menu entries and pages now use their own dedicated permissions, allowing finer access control instead of sharing the general Appointments permission.
+- The Purchase Orders "pre-assigned load" screen now has its own dedicated menu entry and permission.
+- Selecting rows across multiple pages in delivery, customer order, purchase order and load lists is now more reliable and consistently preserved when navigating between pages.
+- The appointment schedule view now shows a visual indicator (✔/✖) for whether a carrier's documents and references have been validated.
+- The gate entry and visitor entry tiles on the mobile home screen are now only shown to users who have permission to access them.
+- Improved reliability of the "print documents" action from the appointment detail page, now correctly resolving the associated load and its document set.
+- The password fields on login/reset forms now use proper browser autocomplete hints for password managers.
+
+### Fixes
+
+- Fixed an issue where removing a delivery, order, or purchase order assignment from a load did not always behave consistently across entity types.
+- Fixed the appointment "Reset password" flow to correctly display success or specific error messages instead of a generic message.
+
 ## [1.45.1] - 2026-07-17
 
 ### New features
