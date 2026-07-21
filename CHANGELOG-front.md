@@ -2,6 +2,25 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.3] - 2026-07-21
+
+### New features
+
+- Added a new **Custom Objects** configuration screen (with its detail lines) allowing users to create, view, edit and delete custom objects of any category, including attaching a document or image to each object and its lines, with a preview (image or PDF) directly on the detail page.
+
+### Improvements
+
+- Truck driver and visitor safety documents (gate entry and visitor check-in) are now managed as configurable documents (images or PDFs) instead of fixed images, and PDFs can now be displayed and previewed directly on the handheld/kiosk, not just images.
+- If a mandatory safety document fails to load, the check-in/gate-entry step now clearly blocks progress with an explicit error instead of silently letting the user continue.
+- Safety documents shared by several visitor zones are now loaded only once, making the visitor check-in screen faster when multiple zones require the same document.
+- Clicking on links within tables and detail pages is now faster, as navigation no longer triggers a full page reload.
+- The application now waits properly for user settings, translations, configuration and parameters to be loaded before displaying the interface, reducing the risk of seeing an incomplete screen right after login.
+
+### Fixes
+
+- Fixed an issue where printing an appointment document could use the wrong reference (load instead of appointment), which could result in an incorrect document being generated.
+- Fixed a case where users could incorrectly be denied access to a page while their permissions were still loading.
+
 ## [1.45.2] - 2026-07-20
 
 ### New features
