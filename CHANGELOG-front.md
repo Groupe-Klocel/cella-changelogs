@@ -2,6 +2,28 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.4] - 2026-07-22
+
+### New features
+
+- On appointment details, you can now print all associated load documents at once, or print the documents for a single load directly from the appointment lines list.
+- Added a dedicated "No Show" reason selection when marking an appointment as no-show, so the reason is recorded consistently, the same way a refusal reason is.
+- Third parties can now have a secondary logo/document uploaded and displayed on their details page.
+- Truck driver and visitor safety documents can now include PDF files, which are displayed in an inline preview alongside images during gate validation and visitor check-in.
+
+### Improvements
+
+- The document list attached to a third party now uses the same, more consistent document management interface as loads, deliveries, and purchase orders (upload, view, download in one place).
+- Third-party document uploads and viewing no longer require separate dedicated pages; everything is managed directly from the third party's detail screen.
+- Truck driver and visitor documents are now resolved and displayed more reliably during gate validation and visitor check-in.
+- Visitor safety instructions details (acceptance status, language, date, allowed zones) are now displayed more reliably on the visitor detail page.
+- Minor display improvement: images and file previews in detail pages are now shown more consistently regardless of the field name.
+
+### Fixes
+
+- Fixed an issue where uploading a document for a field other than the main logo could overwrite the wrong field.
+- Fixed printing behavior when selecting multiple documents across several loads, ensuring each load's documents and reference are handled correctly and reporting which prints failed, if any.
+
 ## [1.45.3] - 2026-07-21
 
 ### New features
