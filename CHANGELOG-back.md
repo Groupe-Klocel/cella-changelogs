@@ -2,6 +2,41 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.31.0] - 2026-07-26
+
+### New features
+
+- New AI-powered chat assistant (CellaBot) that can execute actions in Cella, answer questions, and generate documents on the user's behalf, gated behind a new permission that administrators grant to roles.
+- AI chat now shows live step-by-step progress ("thinking", "running tool", etc.) instead of a frozen spinner, and can render inline charts (bar, line, KPI) from query results.
+- AI chat can propose bulk or destructive changes for explicit user confirmation before executing them, instead of applying them directly.
+- AI chat conversations can now be saved and resumed across sessions and devices, with the ability to view and delete past conversations; each user can only access their own conversations.
+- New "magic filter": users can type a natural-language sentence to auto-generate advanced list filters, including filters on relation-of-relation fields (e.g. delivery by carrier name or contained article name).
+- New AI automations: scheduled AI-generated digests and event-driven "AI hooks" that can write a result into a record field, send a notification, or send an email automatically; unattended runs now return the actual computed result.
+- The AI assistant can be configured per warehouse with a business-specific context/vocabulary and a timezone, so scheduled tasks fire at the correct local time; it also understands per-warehouse custom fields.
+- New AI-assisted translation tool to auto-complete missing UI translations for a warehouse.
+- New documentation article explaining how to set up AI automations (hooks and scheduled digests).
+- New capability allowing warehouses to define custom fields ("x fields") per warehouse without requiring a code change; these fields can be selected, filtered, sorted and written like standard fields, including code-backed values with translated labels. Administrators/integrators can create, update and delete these custom field definitions, with deletion requiring explicit confirmation as it permanently removes the data.
+- New per-warehouse configurable password policy: minimum length, character complexity, password history reuse prevention, minimum difference from the previous password, personal-information/pattern checks, password expiration, and account lockout after repeated failed login attempts; individual workers can be exempted, and the policy is disabled by default.
+- New "send email" capability for plain notification emails (text or HTML, with CC) without needing to generate a document first; by default a worker can only email their own account's domain unless granted a new permission to email any domain.
+- New optional restrictive-visibility setting for roles, letting a role's list results be limited to only the records the calling user created.
+
+### Improvements
+
+- Transaction rollback is now more robust: it only blocks when a specific record was genuinely modified afterwards (rather than any change to the same table), allowing more rollbacks to succeed safely.
+- Improved reliability of real-time updates (record changes, document print notifications, in-app notifications): the system now recovers missed updates after a temporary disconnection instead of silently losing them.
+- Performance improvements for large/nested list queries, warehouse configuration reloads, in-memory cache refreshes, and server startup, reducing latency on heavy warehouse operations.
+- Business/expected errors (e.g. unique constraint violations) are now logged more concisely, without losing detail on unexpected errors.
+
+### Fixes
+
+- Fixed cubing/container logic so that "allowed container" restrictions are respected when appending items to an already-open container, not just when opening a new one.
+- Custom permission values containing quote characters (e.g. a carrier name like "Astr'in") no longer break generated filters and cause a generic error.
+- Fixed a class of database connection leaks where connections could be left open longer than needed, including during nested internal operations triggered by warehouse hooks/functions.
+- Fixed a security issue where advanced input formulas on updates could execute arbitrary code; formulas are now safely sandboxed while still supporting legitimate field-based calculations.
+- Fixed transaction rollback being incorrectly blocked when a later transaction touched a different row of the same table, or when that later transaction had itself already been rolled back.
+- Fixed a bug where the "integrators" query crashed for callers authenticating only with the admin API key.
+- Password expiration now tracks the actual last password change date rather than being affected by internal login mechanics, preventing incorrect forced password resets.
+
 ## [2.30.0] - 2026-06-14
 
 ### New features
