@@ -2,6 +2,26 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.6] - 2026-08-07
+
+### New features
+
+- **Finish position / finish box with packaging review** – When closing a position or a box early on the packing screen, operators now go through the same packaging and weight review step used in the normal packing flow before the remaining missing quantity is declared. This ensures the box is properly closed and labeled even when finished early.
+
+### Improvements
+
+- **Article selection shows description** – When picking an article on customer order lines, purchase order lines, and handling unit content forms, the selection list now also shows the article description next to its name, making it easier to pick the right article.
+
+- **Content movement screen reliability** – The stock content movement workflow (moving quantities between locations/handling units) has been reworked for more consistent behavior when navigating back and forth between steps, scanning locations, articles, or handling units, and when resetting the process.
+
+- **Round list equipment priority** – The round equipment's priority information is now available for display on round-related screens.
+
+### Fixes
+
+- **Label preview in document history** – Fixed an issue where the label preview/print request to the label printing service could fail due to an incorrect address format.
+
+- **Manual allocation of many items** – Fixed an issue where manually allocating boxes or deliveries could silently omit items when a very large number of rows were selected at once.
+
 ## [1.45.5] - 2026-07-27
 
 ### New features
