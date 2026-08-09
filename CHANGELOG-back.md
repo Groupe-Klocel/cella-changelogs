@@ -2,6 +2,36 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.32.0] - 2026-08-09
+
+### New features
+
+- **Spanish AI assistant support** – The AI assistant now understands and replies in Spanish, in addition to French, English and German.
+
+- **New appointment fields** – Appointments can now record a second trailer license plate, driver license and ID numbers, driver driving time, biper/pager numbers, two seal numbers, and a language for the appointment.
+
+- **New round and round-profile options** – Rounds now track a fill rate, and round calculation profiles support a "mono carrier" option.
+
+### Improvements
+
+- **Faster list screens** – Lists across the application load noticeably faster: the total row count is now computed without extra cost for most pages, and sorting by a related list (e.g. delivery lines within a delivery) no longer duplicates rows or produces an inflated count.
+
+- **Faster file uploads** – Uploading template and exchange files is faster and no longer risks freezing other users' actions while a large file is being sent.
+
+- **Faster PDF, ZPL and barcode generation** – Generating delivery-note PDFs, ZPL labels and barcodes no longer slows down other ongoing operations while they are being produced.
+
+- **Faster real-time change notifications** – The live "record changes" stream now catches up more completely after a disconnect, delivering a full backlog of changes in order instead of only the most recent slice, and without duplicate deliveries.
+
+- **More consistent GraphQL schema** – Fields and list values throughout the GraphQL API are now presented in alphabetical order, making the schema easier to browse and use.
+
+### Fixes
+
+- **ZPL label printing** – Printing a batch of ZPL labels to PDF now always includes every label; previously, only the last label of a batch was kept, and an incomplete response from the label service is now clearly rejected instead of silently producing missing labels.
+
+- **Lambda retry delay** – A background retry mechanism for calling functions now actually waits between attempts instead of retrying immediately, avoiding unnecessary repeated failures.
+
+- **Faster warehouse creation** – Creating a new warehouse (tenant) completes much faster than before.
+
 ## [2.31.0] - 2026-07-26
 
 ### New features
