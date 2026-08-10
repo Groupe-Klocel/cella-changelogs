@@ -2,6 +2,46 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.7] - 2026-08-10
+
+### New features
+
+- **Gate kiosk in 13 languages** – Drivers checking in at the gate-entry kiosk can now select their language from a full list including Polish, Romanian, Turkish, Lithuanian, Bulgarian, Hungarian, Russian, Ukrainian and Bosnian, in addition to English, German, French and Spanish. The chosen language is kept for the whole check-in process and no longer gets overridden mid-flow.
+
+- **Waiting area at the gate** – A truck can now be sent to a waiting area instead of directly to a dock. The guard can hand out a pager number, the driver sees clear waiting instructions on the kiosk, and the gate validation dashboard shows a dedicated "Waiting" queue so the truck can be called back and cleared for a dock later.
+
+- **Documents-pending gate outcome** – When paperwork is missing, a gate entry can now be held as "documents pending" instead of being flatly refused. The driver sees a message inviting them to provide the missing documents and retry, and the appointment can be returned to the gate queue once the documents are attached, from the gate screen, the appointment detail page or the planning schedule.
+
+- **Configurable appointment fields** – Administrators can now configure, per screen and per direction (inbound/outbound), which appointment fields are shown, hidden, mandatory or optional, both on the back-office appointment form and on the gate-entry kiosk, without needing a new release.
+
+- **Configurable fields on any record screen** – Administrators can define visibility, mandatory and read-only rules for fields on the add, edit and detail screens of any entity, following the same configuration mechanism as appointments.
+
+- **Outbound driver declarations** – On outbound gate entries, drivers can now declare their driving time and confirm that the transport goes directly to its destination. Both are shown to the security guard when reviewing the appointment.
+
+- **Inbound daily capacity** – Warehouses can configure a maximum number of pallets accepted per day. The appointment form shows a live capacity indicator while booking, the planning schedule displays the day's usage, and bookings that would exceed the cap are blocked for carriers (with an override option for internal planners).
+
+- **Reschedule request** – A carrier can now ask for a confirmed appointment to be rescheduled directly from the appointment page, with an optional reason; the appointment returns to "Submitted" for internal review.
+
+- **Pallet places on appointments** – Carriers can now declare the total number of pallet places a truck occupies, in addition to the detailed pallet breakdown, and this information is visible on the appointment detail page.
+
+- **Article documents** – Documents (certificates, spec sheets, safety data sheets, etc.) can now be attached to and viewed on articles, the same way as for deliveries, loads, purchase orders and third parties.
+
+- **Background Excel imports** – Excel import screens can now run large imports in the background with a completion notification, and support a configurable maximum file size instead of a fixed limit.
+
+### Improvements
+
+- **Gate/appointment status detection made reliable** – Resolution of appointment and visitor statuses (on-site, confirmed, refused, etc.) is now unambiguous even when several statuses have similar labels, preventing occasional mix-ups such as a waiting truck being treated as if it were already on site.
+
+- **Visitor pre-registration email optional** – A visitor can now be pre-registered without an email address; the email format is still validated when one is provided.
+
+- **Schedule day view header alignment** – On the daily planning view, dock column headers now stay correctly aligned with their columns regardless of window width or the number of docks, and long dock names are truncated with a tooltip showing the full name instead of overflowing.
+
+### Fixes
+
+- **Gate entry with hidden fields** – Submitting a gate-entry or appointment form no longer fails or saves stale data when some fields have been configured as hidden; the corresponding values are properly cleared instead of silently left over from a previous state.
+
+- **Excel import reliability** – Import no longer risks sending an incomplete file if confirmed too quickly after selecting it, and errors returned by the import process are now correctly reported to the user instead of being masked as a success.
+
 ## [1.45.6] - 2026-08-07
 
 ### New features
