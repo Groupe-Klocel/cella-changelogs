@@ -2,6 +2,26 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.45.8] - 2026-08-14
+
+### New features
+
+- **Resume boxes waiting for label printing** – In the Pack process, once a round has no more quantities left to prepare but still holds boxes that are already packed and only waiting for their label, the operator can now scan and resume them directly. These boxes skip the article/quantity checks (they are already complete) and go straight to the packaging/weight review, then are closed and their label printed.
+
+- **Delivery point number on delivery addresses** – A new "Entity delivery point number" field is now available when viewing and editing a delivery address.
+
+- **Cubing settings on packaging models** – Handling unit models now support automatic cubing settings (auto-cubing process, auto-cubing order and maximum fill rate), viewable and editable from the packaging model detail screen.
+
+### Improvements
+
+- **Larger Excel import files allowed** – The Excel import screen now accepts files up to 5 MB, instead of the previous 1 MB limit.
+
+- **Delivery cancellation covers more statuses** – Cancelling a delivery now also correctly handles deliveries and boxes in "Estimation error" or "Waiting label" status, avoiding blocked cancellations for these cases.
+
+### Fixes
+
+- **Position scan on resumed boxes** – When resuming an already-packed box waiting for its label, scanning its position no longer triggers a "box already packed" error, allowing the operator to proceed normally.
+
 ## [1.45.7] - 2026-08-10
 
 ### New features
