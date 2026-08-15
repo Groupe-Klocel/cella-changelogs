@@ -2,6 +2,14 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.32.1] - 2026-08-15
+
+### Improvements
+
+- **More reliable AI assistant responses** – The assistant now automatically recovers when the underlying AI model temporarily refuses to use its tools (such as looking up records or running an action), instead of failing the conversation. This makes chat interactions noticeably more robust regardless of which AI model is configured for your warehouse.
+
+- **Expanded and reorganized AI knowledge base** – The documentation the AI assistant relies on to answer "how do I…" and "how does this work" questions has been substantially expanded and restructured, covering many more areas of Cella in greater depth (including truck appointments, gate entry, visitor management, access control, configuration screens, rules, and mobile workflows). This should make the assistant noticeably better at answering detailed operational questions and pointing you to the right screen or setting.
+
 ## [2.32.0] - 2026-08-09
 
 ### New features
