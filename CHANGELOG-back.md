@@ -2,6 +2,16 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.32.2] - 2026-08-23
+
+### Fixes
+
+- **More reliable results on large lists** – Pages containing many related child records (for example many warehouses each with their own related data) could occasionally return incomplete or failed results when loaded at the same time. This no longer happens, and very large lists no longer risk overloading the database connection pool.
+
+- **Correct permission checks for handling unit screens** – Access rights for handling unit models and outbound handling units were sometimes checked against the wrong handling unit type. Each is now checked against its own correct permission.
+
+- **Notification username display fixed** – The user name shown on notifications could fail to load when only that field was requested. It now displays correctly in all cases.
+
 ## [2.32.1] - 2026-08-15
 
 ### Improvements
