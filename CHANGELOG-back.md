@@ -2,6 +2,40 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.33.0] - 2026-09-13
+
+### New features
+
+- **AI document analysis** – The assistant can now read a document (supplier delivery note, invoice, customer order form, photo, Excel/CSV, or a file already attached to a record) and reconcile it against warehouse records such as purchase orders, invoices, sales orders and deliveries. It reports differences, flags damage or blocked stock, and can surface unreadable barcodes. This is available in chat by attaching a file, through a dedicated analysis action with extract, analyze and apply modes, and through automations; content read from a document is always treated as data, never as instructions.
+
+- **AI daily usage budget** – Administrators can set a daily token usage cap per warehouse. Once reached, every AI surface (chat, automations, filter builder, document analysis) refuses further calls until the next day, and the admin configuration screen shows current consumption alongside the cap.
+
+- **Function execution replay** – Administrators, integrators and authorized warehouse workers can now replay a previously executed function using its original recorded arguments, running as the original executor. Internal executions remain admin-only, and access is properly scoped to the caller's warehouse.
+
+- **Graphical layout field on warehouse map elements** – Buildings, blocks and locations now support a "layout" field for storing map/drawing coordinates and dimensions, including filtering, sorting and grouping by layout content, enabling richer warehouse visualization.
+
+### Improvements
+
+- **AI configuration changes apply instantly** – Enabling or disabling AI, changing models, or updating settings now propagates immediately to every server instance instead of waiting for a cache to expire.
+
+- **AI chat streaming improvements** – The streaming chat endpoint can now stream the assistant's answer token-by-token as it is generated, and reports token usage for the whole conversation turn.
+
+- **Clearer AI response status** – The assistant now clearly reports when an answer was cut off by an output limit or declined by the provider, instead of silently returning an incomplete or empty response.
+
+- **AI automations now require the assistant permission** – Running AI tasks or hooks now requires the same assistant permission as interactive chat, closing a way for a restricted user to run the assistant indirectly.
+
+- **Custom fields now also apply to archived tables** – Adding, updating or removing a custom field automatically keeps the corresponding archived table structure in sync.
+
+- **More accurate global text search** – Delivery and handling-unit tracking-related fields are now properly included in the general "search everything" filter.
+
+- **Faster function and automation execution under load** – Improved handling of background execution capacity prevents bursts of automation, hook, or import/export runs from freezing user logins or artificially limiting throughput.
+
+### Fixes
+
+- **Fixed GraphQL query fragments** – Queries using GraphQL fragments, including on nested or related data, now return the correct fields instead of failing or silently returning empty results.
+
+- **Fixed pagination on filtered child lists** – Paging through a related list (for example a building's blocks) filtered by a nested field no longer returns duplicate or missing entries.
+
 ## [2.32.2] - 2026-08-23
 
 ### Fixes
