@@ -2,6 +2,20 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.33.1] - 2026-10-06
+
+### New features
+
+- **Automatic parcel reunification during cubing** – When preparing shipments, parcels that could fit together in a single container are now automatically merged after the initial placement, before the final compacting step. This removes unnecessary extra parcels that could previously appear, for example when a large flat item didn't fit the first box tried and triggered a second parcel even though one container could have held everything. This behaviour can be switched off per cubing request if needed.
+
+- **Optional building link on deliveries, rounds and handling units** – Deliveries, rounds, and inbound/outbound handling units can now be optionally linked to the building where they are expected to be prepared. A building that is still referenced this way cannot be deleted until the link is removed.
+
+- **Maximum article dimensions on equipment** – Equipment can now be configured with maximum article dimensions it is able to handle, allowing better control over which equipment is eligible for which articles.
+
+### Improvements
+
+- **Faster access to deep archived pages** – Browsing far into paginated lists that combine live and archived data (e.g. status histories) is now much faster and no longer blocked. Previously, requesting a page far down the list returned an error; now these deep pages load reliably and efficiently, even on very large histories.
+
 ## [2.33.0] - 2026-09-13
 
 ### New features
