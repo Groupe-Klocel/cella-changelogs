@@ -2,6 +2,30 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.33.2] - 2026-10-10
+
+### Improvements
+
+- **CellaBot live answers and Stop button** – CellaBot answers now appear progressively as they are generated. A Stop button lets you cut an answer short: nothing further starts, but a query, change or function already running when you press it still completes, so Stop should not be treated as an undo. A turn stopped before completion is not saved in your conversation history.
+
+- **CellaBot attachments** – When enabled for your warehouse, a paperclip next to the message box lets you attach PDFs, images, Excel, CSV or text files (up to 5 files / 8 MB by default) for CellaBot to read and discuss, either alone or alongside your question.
+
+- **CellaBot conversation management** – Conversations can now be renamed from the history panel, in addition to being continued or deleted. Charts now include a "Show data" option listing the exact figures, and each answer shows the AI token cost next to a new copy button.
+
+- **Data import error handling** – File imports can now continue past a row in error (link not found, invalid data, rejected value) instead of stopping, recording each error in the emailed log while the rest of the file is still processed. When an import does stop on error, everything already imported in that run is now automatically rolled back.
+
+- **Data import date and JSON support** – Import spreadsheets can now carry date/time values directly, and a new `:json` column type lets a cell hold a structured JSON value (object or list), merged into existing data on update. Link columns used as selection criteria can now match several records at once.
+
+- **Faster large list loading** – Reading very large lists of records (for example a stock pattern with tens of thousands of locations) no longer slows down or stalls other users' actions on the same server while that large read is being processed.
+
+- **Filtered list and count accuracy** – Filtering lists (back office and handheld) on a field that comes from a related sub-list (for example filtering handling units by the content they contain) is now more reliable and faster, and no longer risks slowing down or crashing the server on large data sets. Counts and grouped totals on such filtered lists are now always accurate.
+
+- **Bulk update reliability** – Updating multiple records at once using a filter now reliably finds and updates all matching records, even right after another change was just made to them.
+
+### Fixes
+
+- **CellaBot widget documentation accuracy** – The description of what CellaBot can do, including its answer events and saved result format, has been corrected and clarified for better predictability of its behavior.
+
 ## [2.33.1] - 2026-10-06
 
 ### New features
