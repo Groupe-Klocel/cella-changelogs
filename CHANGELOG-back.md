@@ -2,6 +2,42 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.33.4] - 2026-10-22
+
+### Fixes
+
+- **Duplicate relation selections** – A relation selected twice in the same request (for example an article shown in full under one field and partially under another) now keeps each view correct instead of occasionally returning the reduced version for both.
+
+- **Document labels and translations** – The display language is now determined reliably from each query's own request. Previously a request combining a worker/stock-owner relation with other warehouse data could silently fall back to the wrong language or show raw codes instead of translated labels.
+
+- **Batched requests reliability** – Sending several GraphQL operations together in one call no longer risks one operation interfering with another's data or occasionally failing with a database connection error.
+
+- **Function execution logs** – When several automated functions run at the same time, each one's execution log now stays separate; logs are no longer mixed between unrelated runs.
+
+- **Permission checks after warehouse change** – A worker moved to a different warehouse is now correctly re-checked against their new warehouse's permissions instead of potentially keeping old access rights.
+
+- **Worker without assigned role** – A worker with no permission role configured in their warehouse no longer triggers an unexpected error when accessing data; access is correctly denied instead.
+
+- **Broken relation links** – Several relations that previously returned no data or an error when selected (including delivery-to-delivery links, some document and function history links, and a few others) now resolve correctly.
+
+- **Mismatched key lookups** – Relations linking fields of different internal types (for example a record ID stored as text pointing to a numeric table) now resolve correctly instead of always appearing empty. An invalid or out-of-range reference now simply shows as empty instead of causing an error for unrelated records in the same request.
+
+- **Large selection lists** – Filtering or updating using very large lists of IDs or values (tens of thousands) no longer risks hitting an internal limit and failing; these operations now complete normally regardless of list size.
+
+- **AI structured response fallback** – A configuration issue on one AI deployment no longer affects other warehouses or deployments using a model of the same name.
+
+### Improvements
+
+- **Faster loading of repeated relations** – When the same type of related data is requested multiple times in one query (for example an article referenced from different places), it is now fetched in a single read instead of several, improving response times on larger queries.
+
+- **Function history visibility** – The function execution history shown directly on a function now clearly indicates it covers only the most recent executions, with a note to use the dedicated history list for full history.
+
+## [2.33.3] - 2026-10-12
+
+### Fixes
+
+- **Duplicate relation selections** – When a request selected the same relation twice with different levels of detail (for example a full article under a handling unit content, and only its name under a delivery line), the data could occasionally come back incorrectly reduced to the smaller selection for both, with no error shown. This has been fixed, so each selection now reliably returns its own requested fields. This was notably affecting carrier label documents, which could end up missing the article weight.
+
 ## [2.33.2] - 2026-10-10
 
 ### Improvements
