@@ -2,6 +2,32 @@
 
 <!-- CHANGELOG:START -->
 
+## [2.34.0] - 2026-10-28
+
+### New features
+
+- **Physical packing check for parcels** – The cubing engine can now verify that all the articles planned for a parcel actually fit together inside the chosen box, not just that their combined volume is small enough. This prevents cases where a parcel is validated on paper but can never physically be packed, and lets articles be tilted to fit when needed.
+
+- **Packing plan and 3D preview data** – When the physical packing check is enabled, Cella can now provide a detailed packing plan for each parcel: the position, size and orientation of every article inside the box. This data can be used to show operators a 3D preview of how to pack a parcel, and it can be stored on the outbound handling unit for later reference.
+
+- **Article and box packing rules** – Articles can now be marked as "upright" (must stay vertical, e.g. bottles) and given a maximum load they can bear on top of them, so fragile items are no longer planned under heavy ones. Articles and boxes can also be tagged with compatibility criteria (e.g. FRAGILE, HEAVY, FOOD) so that incompatible items are never packed together, and boxes can restrict which tagged items they accept.
+
+- **Flexible packaging support** – Pouches and bags can now be declared as "flexible" packaging: the cubing engine treats them as taking the shape of their content (checking volume only) instead of applying the strict physical packing check meant for rigid boxes.
+
+- **Option to always pack boxes upright** – A new setting lets the cubing engine always fill rigid boxes standing on their base rather than occasionally planning them lying on their side, making packing instructions more intuitive for warehouse operators, at the cost of slightly more shipped volume in some cases.
+
+### Improvements
+
+- **Fewer unnecessary oversized parcels** – The cubing engine now better detects when several small parcels could be merged into one box, and avoids selecting a container that looks big enough by volume but cannot actually hold all the required articles together.
+
+- **More reliable counter numbers** – Sequence numbers (such as movement, delivery, load, or order numbers, and SSCC numbers) are now generated through a faster, more robust mechanism. This prevents slowdowns and queuing issues during periods of high activity, without changing the numbering behavior for end users.
+
+- **Clearer information sent to AI automations** – When an AI-powered automation reacts to a record update, it now receives a clear summary of exactly what changed (old and new values for each modified field) instead of a potentially truncated, hard-to-read full copy of the record. Very large field values (such as files or detailed packing plans) are now summarized instead of being sent in full.
+
+### Fixes
+
+- **Accurate counter limits** – Counters with configured minimum/maximum bounds, including very large values, now behave correctly in all cases, including wrapping back to the minimum when the maximum is reached.
+
 ## [2.33.4] - 2026-10-22
 
 ### Fixes
