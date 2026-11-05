@@ -2,6 +2,132 @@
 
 <!-- CHANGELOG:START -->
 
+## [1.46.0] - 2026-11-05
+
+### New features
+
+- **Manual Repacking module (mobile)** – A new RF workflow lets operators split a box into several new boxes, or consolidate several boxes into one, with guided scanning of boxes and products, quantity entry, packaging and weight review, automatic backend validation and label printing.
+
+- **Tablet-optimized kiosk screens** – The truck gate and visitor check-in tablet screens have been redesigned with larger buttons, clearer required/optional field tags, a step progress indicator, a readable recap bar, bigger signature pads, and a mobile-friendly layout for phones.
+
+- **Installable kiosk/RF app** – The mobile application can now be installed as a full-screen app ("Add to Home Screen") on tablets and handhelds, for a more native, distraction-free experience.
+
+- **CellaBot live streaming answers (mobile)** – The mobile CellaBot assistant now streams its answer as it is being written, shows progress messages (e.g. "Querying data…", "Reading a document…"), and lets the operator stop a running answer.
+
+- **New cartography editor** – A new "Cartography editor" screen is available under Configuration, allowing visual/interactive editing of building, floor, and aisle layouts, including access points between buildings and floors, with support for dragging, resizing and reorienting aisles.
+
+- **Quick menu search and favourites in navigation** – Clicking the section item of the breadcrumb opens a searchable list of every menu entry the user can access. Screens marked as favourites on the home page now appear in a dedicated "Favourites" group at the top of the side menu, and recently visited pages are tracked on the home page (cleared on logout for shared workstations).
+
+- **Smarter breadcrumb navigation** – The breadcrumb now follows the actual path travelled between pages rather than only the static page hierarchy. Clicking a breadcrumb entry returns to that exact page, and the back button returns to the page the user actually came from.
+
+- **Archive inclusion toggle on history screens** – History/list screens can now include archived records in addition to current data via a new "Include archives" button, which shows the archived date range or indicates when no archive exists.
+
+- **Packaging (logistic units) list screen** – A new "Logistic units" / packaging list screen is available under Articles, letting users search and filter packagings by linked article attributes (description, barcode, family, subfamily, supplier) and by their own barcode, with more dimension/weight/preparation columns visible by default.
+
+- **Mass edit of packagings** – Users can now bulk-edit multiple packagings at once (dimensions, weight, status, preparation/picking/sort type, rotation, replenishment thresholds, handling unit model, picking location, patterns), with a "clear field" option and a confirmation recap before applying changes.
+
+- **Automatic re-estimation prompt after packaging changes** – After editing a packaging's dimensions/weight/etc. (single or bulk edit), users are offered to automatically resend affected estimated deliveries for re-estimation, with a count of impacted deliveries shown before confirming.
+
+- **New cubing/packing constraints on packagings** – Packagings can now specify "upright" handling, a maximum load weight, and cubing tag constraints (own tags and tags allowed alongside), usable in the automated cubing/packing calculation.
+
+- **New equipment sorting limits** – Equipment (e.g. sorters) can now have maximum article dimension limits configured, usable to control sorting eligibility.
+
+- **New handling unit model cubing settings** – Handling unit models now support a "flexible cubing" option and allowed cubing tags, and the "auto cubing order" field is now mandatory with a default value and shown in lists by default.
+
+- **3D packing plan viewer** – Outbound parcels that have a computed packing plan now offer a "View 3D" button showing an interactive 3D visualization of how articles are arranged inside the parcel/container, with hover details per item.
+
+- **New aisle step settings in block/location creation** – When creating block locations, new "step" fields (aisle, column, level, position) let users define increments between generated locations, defaulting to 1.
+
+- **Route analysis page** – A new permission-gated page for round route analysis detail is now available under Rounds.
+
+### Improvements
+
+- **RF action buttons lock during processing** – Action buttons on handheld screens are now disabled with a loading indicator while an action is being processed, preventing accidental double taps and duplicate operations.
+
+- **Clearer picking error recovery** – When a pick is refused because the data is out of date, operators are now sent back to the round selection screen (keeping scanned equipment) instead of being stuck retrying the same failed line.
+
+- **Equipment selection shows overdue rounds** – The equipment selection lists for Pick and Pick-and-Pack now show, for each equipment, the total number of rounds to prepare and how many are due today or overdue (highlighted in red), sorted by workload.
+
+- **Pack screen: live article checklist** – While controlling a box during packing, operators now see a scrollable checklist of articles still to scan and already scanned, with quantities. Boxes packed without control show the full expected article list instead.
+
+- **Pack screen: more accurate weight suggestion** – The suggested box weight at packing now reflects what was actually packed (partial box, forced closure) rather than always assuming the full planned content, and updates live when a different packaging/handling unit model is selected.
+
+- **Pick: clearer equipment scan errors** – Scanning the wrong equipment, equipment already used by another round, or an invalid item now shows specific, understandable error messages instead of a generic one.
+
+- **Pick: cart position barcode scanning** – Boxes can now be identified directly by scanning a cart position barcode (equipment + position combined), in addition to existing scanning methods.
+
+- **Advised inventory confirmation hardened** – The "Is this location empty?" confirmation dialog can no longer be dismissed by tapping outside it, pressing Escape, or using a close button; only explicit Yes/No answers are accepted.
+
+- **Configurable remaining-quantity check** – The "Is the location empty?" prompt during Pick and Pick-and-Pack quantity entry can now be turned off per warehouse via a parameter.
+
+- **Header shows logged-in username** – The mobile app header now displays the current operator's username next to the language selector.
+
+- **Pack/content-movement header shows supplier information** – Movement and packing screens now also display the supplier article code and description in relevant headers and carousels.
+
+- **Load selection shows shipping mode** – When selecting a load manually, the list now shows the carrier's shipping mode alongside the load name.
+
+- **Printer list loads faster** – The printer selection step during packing now reads available printers from already-loaded app data instead of making an extra request, and respects the defined business order.
+
+- **Cycle count list filtered to normal counts** – The cycle count selection screen now only shows "Normal" model cycle counts, hiding other types that shouldn't be manually selected there.
+
+- **Visitor re-entry within visit dates** – A visitor who already checked out can now check back in again as long as it's still within the originally booked visit dates, instead of being blocked with an "already checked out" error.
+
+- **Signed safety documents are now permanently recorded** – For truck drivers and visitors, the exact safety documents shown and accepted (their identity and content) are now saved at sign-off, so what was actually agreed to can be verified later even if the underlying documents are later changed.
+
+- **Audit trail for safety acceptance** – The exact safety documents presented at signature time are now shown on both the appointment and visitor detail pages, reflecting what was actually signed rather than the current version of the rule. Loading and read-failure states are distinguished from "no documents available".
+
+- **Driver/visitor signature visible after check-in** – The signed entry signature, acceptance date and accepted documents are now visible on the appointment detail page at any status, not only during gate validation.
+
+- **Responsive detail and list screens** – Detail pages, page headers, forms, and table toolbars now adapt better to narrow screens: labels and values no longer get squeezed or clipped, and images and action buttons resize or reflow appropriately.
+
+- **Clickable links in detail views** – Any detail field containing a web address is now shown as a clickable link that opens in a new tab.
+
+- **SSO login button reliability fix** – The single sign-on (SSO) login button now only appears when SSO is actually configured and available, fixing cases where it could incorrectly show or hide.
+
+- **Picking location search improved in packaging forms** – The picking location field in packaging add/edit forms now uses a searchable server-side autocomplete instead of a client-side list limited to the 100 most recent locations, fixing cases where large warehouses could not find the right location.
+
+- **Stock owner selectable when adding a barcode** – When adding a barcode to an article, the stock owner is now a required, searchable, editable field instead of a fixed read-only value inherited from the article.
+
+- **Barcode creation from packaging detail** – Barcodes can now be added directly from a packaging's detail page, with the packaging pre-selected and the user returned to that same packaging afterward.
+
+- **Packaging detail shows its own barcodes** – A packaging's detail page now lists only the barcodes belonging to that specific packaging.
+
+- **Delivery address search filters** – Deliveries can now be filtered by shipping address details (entity name, contact name, postal code, city, country code), and by the preparation mode or article name/barcode of their lines.
+
+- **Delivery attached document** – A document attached to a delivery by the host system can now be viewed via a link on the delivery detail page and included in printable documents.
+
+- **Carrier tracking info on parcels** – Outbound parcels now display the carrier tracking number with a clickable tracking link, plus the sorter/equipment position barcode scanned for the parcel.
+
+- **Purchase order supplier name** – The supplier's name is now shown and searchable on purchase order records.
+
+### Fixes
+
+- **Pick and Pick-and-Pack duplicate validation fix** – Fixed a rare issue (e.g. after a session timeout and re-login) where a picking validation could be sent twice, incorrectly reducing stock quantities and corrupting round progress. Operators are now safely redirected to re-select the round instead of being stuck in a loop.
+
+- **"Next" button fixes in Pick / Pick-and-Pack** – The "Next" button now appears whenever another location/article combination remains to be prepared, and correctly cycles back to remaining skipped lines instead of stopping.
+
+- **Fix for blank screen at end of round** – Picking and Pick-and-Pack no longer crash into a blank screen when there is nothing left to prepare in a round; a clear message is shown instead.
+
+- **Cancelled box handling in Pick/Pack** – Boxes that have been cancelled are now properly recognized and refused during packing and position scanning, with a dedicated error message, instead of being silently accepted or causing confusing navigation loops.
+
+- **Pick-and-Pack article/location matching fixes** – Resolved several dead-end situations where a correct location or article was repeatedly rejected due to inconsistent rules between steps.
+
+- **Reception recovery from stale purchase order data** – If a goods reception is refused because the purchase order has changed since it was scanned, the operator is now automatically brought back to a refreshed article scan screen instead of being stuck on a failing line.
+
+- **Round assignment race condition fix** – Selecting a round now assigns it through a safer update, reducing the risk of two operators both grabbing the same unassigned round.
+
+- **Load/unload counters more reliable** – Loading and unloading boxes onto/off a load now updates the box count and weight through a safer server-side calculation, reducing incorrect counts when multiple operators work on the same load at once. The closing weight now uses the actual weighed value when available.
+
+- **Pack: safer waiting-label box handling** – When resuming a box that is only waiting for its shipping label, the system now strictly ensures the scanned box is the correct one, refusing mismatched or already-cancelled boxes with a clear message.
+
+- **Pack: fixed shipping pallet re-scan after closure** – Fixed an issue where closing a shipping pallet mid-process could cause the system to lose track of it, creating a duplicate pallet or keeping the old closed pallet shown in the header.
+
+- **Pick & Pack: location change mid-round fixed** – Fixed a bug where, after using "Next" to move to a different line, the system could keep asking for an irrelevant location scan or fail to pre-fill the correct product/location information.
+
+- **Gate/Visitor kiosk "Back" button fixed** – Fixed the Back button on the truck gate and visitor check-in screens, which previously restarted the whole process instead of returning to the prior step.
+
+- **Session data isolation on login** – Logging in now clears any leftover in-progress RF process data from a previous session on the same device, preventing stale data from bleeding into a new session. CellaBot conversations are also properly reset on logout or user switch.
+
 ## [1.45.8] - 2026-08-14
 
 ### New features
